@@ -1,0 +1,33 @@
+.header {
+    display:flex;
+    justify-content: center;
+    margin: 10px 0;
+}
+.content {
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    display: grid;
+    gap: 10px;
+    min-width: 960px;
+    min-height: 800px;
+    background-color: mistyrose;
+    justify-content: center;
+    grid-template-columns: repeat(16, 1fr);
+    grid-template-rows: repeat(16, 1fr);
+
+}
+
+.container > div {
+    background-color: goldenrod;
+}
+
+div.entered {
+    background-color: forestgreen;
+}
+
+button {
+    text-align: center;
+}
