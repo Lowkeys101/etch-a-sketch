@@ -17,9 +17,18 @@ const addMouseenterEventListener = function(elements = []) {
     elements.forEach(element => {
         element.addEventListener("mouseenter", () => {
             element.classList.add("entered");
+            let elementColor = element.style.backgroundColor;
+            if(elementColor) {
+                let rgbColors = elementColor.match(/\d+/g);
+                element.style.backgroundColor = `rgb(${parseInt(parseInt(rgbColors[0])*0.9)}, ${parseInt(parseInt(rgbColors[1])*0.9)}, ${parseInt(parseInt(rgbColors[2])*0.9)})`;
+                console.log(element.style.backgroundColor)
+            } else {
+                element.style.backgroundColor = `rgb(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)})`
+            }
         });
     });
 }
+
 
 divContainer = document.querySelector(".container");
 divs = createDivs(16 * 16);
@@ -39,6 +48,8 @@ clearButton.addEventListener("click", () => {
         divs = createDivs(numberOfSides * numberOfSides);
         addDivsToContainer(divs, divContainer);
         addMouseenterEventListener(divs);
+        divContainer.style.gridTemplateColumns = `repeat(${numberOfSides}, 1fr)`;
+        divContainer.style.gridTemplateRows = `repeat(${numberOfSides}, 1fr)`;
     }
 });
 
